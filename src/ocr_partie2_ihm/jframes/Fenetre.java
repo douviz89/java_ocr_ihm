@@ -1,4 +1,4 @@
-package ocr_partie2_ihm;
+package ocr_partie2_ihm.jframes;
 
 import java.awt.HeadlessException;
 import javax.swing.JFrame;
