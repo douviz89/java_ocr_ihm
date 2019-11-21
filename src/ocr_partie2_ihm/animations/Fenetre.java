@@ -21,6 +21,7 @@ public class Fenetre extends JFrame {
 	private boolean animated = true;
 	private boolean backX, backY;
 	private int x, y;
+	private Thread t;
 
 	public Fenetre() {
 		this.setTitle("Animation");
@@ -85,9 +86,10 @@ public class Fenetre extends JFrame {
 	class BoutonListener implements ActionListener {
 		public void actionPerformed(ActionEvent arg0) {
 			animated = true;
+			t = new Thread(new PlayAnimation());
+			t.start();
 			bouton.setEnabled(false);
 			bouton2.setEnabled(true);
-			go();
 		}
 	}
 
@@ -96,6 +98,12 @@ public class Fenetre extends JFrame {
 			animated = false;
 			bouton.setEnabled(true);
 			bouton2.setEnabled(false);
+		}
+	}
+
+	class PlayAnimation implements Runnable {
+		public void run() {
+			go();
 		}
 	}
 }
